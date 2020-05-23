@@ -1,8 +1,8 @@
 pipeline {
 	environment {
 		prodServer = 'ec2-15-161-61-125.eu-south-1.compute.amazonaws.com'
-		tomcatImage = "kargyris/mytomcat"
-		mysqlImage = "kargyris/mymysql"
+		tomcatImage = "kargyris/tomcatfinal"
+		mysqlImage = "kargyris/mysqlfinal"
 		registryCredential = 'dockerhub'
 		versionNumber = 2
 		dockerTomcatImage = ''
