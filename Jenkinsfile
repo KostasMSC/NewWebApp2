@@ -7,11 +7,9 @@ pipeline {
 		versionNumber = 2
 		dockerTomcatImage = ''
 		dockerMysqlImage = ''
+		PATH = "/home/ubuntu/.local/bin/:$PATH"
 	}
     agent any
-    environment {
-      PATH = "/home/ubuntu/.local/bin/:$PATH"
-    }
     stages {
         stage ('Git-checkout') {
             steps {
