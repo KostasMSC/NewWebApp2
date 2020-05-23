@@ -19,7 +19,7 @@ RUN wget ${DLLINK}/${TOMCATZ}
 
 RUN tar -xvzf ${TOMCATZ}
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD exec ${TARGETD}/bin/catalina.sh run
 
