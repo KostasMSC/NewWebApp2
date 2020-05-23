@@ -9,6 +9,9 @@ pipeline {
 		dockerMysqlImage = ''
 	}
     agent any
+    environment {
+      PATH = "/home/ubuntu/.local/bin/:$PATH"
+    }
     stages {
         stage ('Git-checkout') {
             steps {
