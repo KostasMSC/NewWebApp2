@@ -17,35 +17,9 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
-                sh 'mvn package';
+                sh 'eb deploy';
             }
         }
-        stage('Remove Containers, Images etc') {
-            steps {
-                sh 'docker system prune -a -f';
-            }
-        }
-		stage('Building Tomcat image') {
-		  steps{
-		    script {
-		      dockerTomcatImage = docker.build tomcatImage
-		    }
-		  }
-		}
-		stage('Push Tomcat Image to Dockerhub') {
-		  steps{
-		     script {
-		        docker.withRegistry( '', registryCredential ) {
-		        dockerTomcatImage.push()
-		      }
-		    }
-		  }
-		}
-		stage('Remove Unused Tomcat image') {
-		  steps{
-		    sh "docker rmi -f $tomcatImage"
-		  }
-		}
     }
     post {
         always {
