@@ -28,7 +28,7 @@ pipeline {
 		stage('Building Tomcat image') {
 		  steps{
 		    script {
-		      dockerTomcatImage = docker.build tomcatImage + ":$versionNumber.$BUILD_NUMBER"
+		      dockerTomcatImage = docker.build tomcatImage
 		    }
 		  }
 		}
@@ -43,7 +43,7 @@ pipeline {
 		}
 		stage('Remove Unused Tomcat image') {
 		  steps{
-		    sh "docker rmi -f $tomcatImage:$versionNumber.$BUILD_NUMBER"
+		    sh "docker rmi -f $tomcatImage"
 		  }
 		}
     }
