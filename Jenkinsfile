@@ -30,10 +30,10 @@ pipeline {
 			        // Since AWS failed on create if environment already exists, try/catch block allow to continue deploy without failing
 			        script {
 				        try {
-				            sh 'exit 1'
+				            sh 'eb create NewWebApp2-env --single --cname NewWebApp2';
 				        }
 				        catch (exc) {
-				            echo 'Something failed, I should sound the klaxons!';
+				            echo "Error while creating environment, continue..., cause: " + e;
 				        }
 			        }
 	                sh 'eb use NewWebApp2-env';
