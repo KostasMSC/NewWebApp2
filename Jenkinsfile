@@ -16,9 +16,20 @@ pipeline {
                 echo "Checking out from git repository.";
             }
         }
-		withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-		    sh 'eb deploy';
-		}
+        stage('Build') {
+            steps {
+                // Example AWS credentials
+                withCredentials(
+                [[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    credentialsId: 'AWS',  // ID of credentials in Jenkins
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    echo "Listing contents of an S3 bucket.";
+                }
+            }
+        }
 
     }
     post {
