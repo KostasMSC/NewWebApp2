@@ -18,6 +18,7 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
+                sh 'git pull';
                 sh 'git checkout master';
                 sh 'eb init';
                 sh 'eb use NewWebApp2-env';
