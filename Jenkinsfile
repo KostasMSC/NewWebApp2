@@ -2,7 +2,7 @@ pipeline {
 	environment {
 		tomcatImage = "kargyris/tomcatfinal"
 		registryCredential = 'dockerhub'
-		PATH = "/home/ubuntu/.pyenv/versions/3.7.2/bin:/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
+		PATH = "/opt/apache-maven-3.6.3:/home/ubuntu/.pyenv/versions/3.7.2/bin:/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
 	}
     agent any
     stages {
