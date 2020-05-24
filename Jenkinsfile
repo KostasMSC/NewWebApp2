@@ -1,12 +1,7 @@
 pipeline {
 	environment {
-		prodServer = 'ec2-15-161-61-125.eu-south-1.compute.amazonaws.com'
 		tomcatImage = "kargyris/tomcatfinal"
-		mysqlImage = "kargyris/mysqlfinal"
 		registryCredential = 'dockerhub'
-		versionNumber = 2
-		dockerTomcatImage = ''
-		dockerMysqlImage = ''
 		PATH = "/home/ubuntu/.pyenv/versions/3.7.2/bin:/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
 	}
     agent any
@@ -16,7 +11,38 @@ pipeline {
                 echo "Checking out from git repository.";
             }
         }
-        stage('Build') {
+        stage('Maven Build') {
+            steps {
+                sh 'mvn package';
+            }
+        }
+        stage('Remove Containers, Images etc') {
+            steps {
+                sh 'docker system prune -a -f';
+            }
+        }
+		stage('Building Tomcat image') {
+		  steps{
+		    script {
+		      dockerTomcatImage = docker.build tomcatImage
+		    }
+		  }
+		}
+		stage('Push Tomcat Image to Dockerhub') {
+		  steps{
+		     script {
+		        docker.withRegistry( '', registryCredential ) {
+		        dockerTomcatImage.push()
+		      }
+		    }
+		  }
+		}
+		stage('Remove Unused Tomcat image') {
+		  steps{
+		    sh "docker rmi -f $tomcatImage"
+		  }
+		}
+        stage('AWS Beanstalk Build') {
             steps {
                 // Example AWS credentials
                 withCredentials(
