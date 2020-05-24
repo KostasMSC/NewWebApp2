@@ -26,11 +26,11 @@ pipeline {
                     credentialsId: 'aws_id',  // ID of credentials in Jenkins
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                    echo "Listing contents of an S3 bucket.";
+	                sh 'eb use NewWebApp2-env';
+	                sh 'eb deploy --verbose';
                 }
             }
         }
-
     }
     post {
         always {
