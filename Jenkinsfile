@@ -14,7 +14,7 @@ pipeline {
         stage ('Git-checkout') {
             steps {
                 echo "Checking out from git repository.";
-                sh 'python --version';
+                sh '/home/ubuntu/.pyenv/versions/3.7.2/bin/python --version';
             }
         }
         stage('Build') {
