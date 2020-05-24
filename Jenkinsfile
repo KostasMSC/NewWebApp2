@@ -24,7 +24,7 @@ pipeline {
     }
     post {
         always {
-            echo "Always execute this."
+            echo "Always execute this!"
         }
         success  {
             echo "Execute when run is successful."
