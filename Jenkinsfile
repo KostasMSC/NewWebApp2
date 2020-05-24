@@ -19,7 +19,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 sh 'echo $PATH';
-                sh 'eb deploy';
+                sh '/home/ubuntu/.ebcli-virtual-env/executables/eb deploy';
             }
         }
     }
