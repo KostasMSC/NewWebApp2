@@ -14,6 +14,7 @@ pipeline {
         stage ('Git-checkout') {
             steps {
                 echo "Checking out from git repository.";
+                sh 'python --version';
             }
         }
         stage('Build') {
