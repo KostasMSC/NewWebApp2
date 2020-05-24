@@ -21,7 +21,7 @@ pipeline {
                 sh 'git pull origin master';
                 sh 'git checkout master';
                 sh 'eb use NewWebApp2-env';
-                sh 'eb deploy --profile default';
+                sh 'eb deploy --verbose';
             }
         }
     }
