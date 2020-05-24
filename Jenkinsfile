@@ -7,7 +7,7 @@ pipeline {
 		versionNumber = 2
 		dockerTomcatImage = ''
 		dockerMysqlImage = ''
-		PATH = "/home/ubuntu/.local/bin/:$PATH"
+		PATH = "/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
 	}
     agent any
     stages {
@@ -19,7 +19,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 sh 'echo $PATH';
-                sh '/home/ubuntu/.ebcli-virtual-env/executables/eb deploy';
+                sh 'eb deploy';
             }
         }
     }
