@@ -26,13 +26,8 @@ pipeline {
                     credentialsId: 'aws_id',  // ID of credentials in Jenkins
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-			        sh 'eb init NewWebApp2 -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" '
-			        // Since AWS failed on create if environment already exists, try/catch block allow to continue deploy without failing
-			        try {
-			          sh 'eb create NewWebApp2-env --single --cname NewWebApp2'
-			        } catch(e) {
-			          echo "Error while creating environment, continue..., cause: " + e
-			        }
+			        sh 'eb init NewWebApp2 -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" ';
+
 	                sh 'eb use NewWebApp2-env';
 	                sh 'eb deploy';
                 }
