@@ -7,14 +7,13 @@ pipeline {
 		versionNumber = 2
 		dockerTomcatImage = ''
 		dockerMysqlImage = ''
-		PATH = "/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
+		PATH = "/home/ubuntu/.pyenv/versions/3.7.2/bin:/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
 	}
     agent any
     stages {
         stage ('Git-checkout') {
             steps {
                 echo "Checking out from git repository.";
-                sh '/home/ubuntu/.pyenv/versions/3.7.2/bin/python --version';
             }
         }
         stage('Build') {
