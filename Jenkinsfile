@@ -2,6 +2,8 @@ pipeline {
 	environment {
 		tomcatImage = "kargyris/tomcatfinal"
 		registryCredential = 'dockerhub'
+		awsEnvironment = 'NewWebApp2-env'
+		awsApp = 'NewWebApp2'
 		PATH = "/home/ubuntu/.pyenv/versions/3.7.2/bin:/home/ubuntu/.ebcli-virtual-env/executables:$PATH"
 	}
     agent any
@@ -52,17 +54,17 @@ pipeline {
                     credentialsId: 'aws_id',  // ID of credentials in Jenkins
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-			        sh 'eb init NewWebApp2 -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" ';
+			        sh 'eb init $awsApp -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" ';
 			        // Since AWS failed on create if environment already exists, try/catch block allow to continue deploy without failing
 			        script {
 				        try {
-				            sh 'eb create NewWebApp2-env --single --cname NewWebApp2';
+				            sh 'eb create $awsEnvironment --single --cname $awsApp';
 				        }
 				        catch (exc) {
 				            echo "Error while creating environment, continue..., cause: " + exc;
 				        }
 			        }
-	                sh 'eb use NewWebApp2-env';
+	                sh 'eb use $awsEnvironment';
 	                sh 'eb deploy';
                 }
             }
