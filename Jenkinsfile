@@ -29,9 +29,11 @@ pipeline {
 			        sh 'eb init NewWebApp2 -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" ';
 			        // Since AWS failed on create if environment already exists, try/catch block allow to continue deploy without failing
 			        try {
-			          sh 'eb create NewWebApp2-env --single --cname NewWebApp2';
-			        } catch(e) {
-			          echo "Error while creating environment, continue..., cause: " + e;
+			            sh 'exit 1'
+			        }
+			        catch (exc) {
+			            echo 'Something failed, I should sound the klaxons!'
+			            throw
 			        }
 	                sh 'eb use NewWebApp2-env';
 	                sh 'eb deploy';
