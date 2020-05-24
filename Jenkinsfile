@@ -18,7 +18,8 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
-                sh 'eb deploy NewWebApp2-env';
+                sh 'eb use NewWebApp2-env';
+                sh 'eb deploy';
             }
         }
     }
