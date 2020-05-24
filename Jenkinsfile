@@ -18,7 +18,6 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
-                sh 'echo $PATH';
                 sh 'eb deploy';
             }
         }
