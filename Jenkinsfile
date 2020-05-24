@@ -27,8 +27,7 @@ pipeline {
 	        } catch(e) {
 	          echo "Error while creating environment, continue..., cause: " + e
 	        }
-	        sh 'eb use jenkins-env'
-	        sh 'eb setenv SERVER_PORT=5000'
+	        sh 'eb use NewWebApp2-env'
 	      }
 	      // Ready to deploy our new version !
 	      stage('Deploy') {
