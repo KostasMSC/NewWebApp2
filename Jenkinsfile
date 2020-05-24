@@ -32,8 +32,7 @@ pipeline {
 			            sh 'exit 1'
 			        }
 			        catch (exc) {
-			            echo 'Something failed, I should sound the klaxons!'
-			            throw
+			            echo 'Something failed, I should sound the klaxons!';
 			        }
 	                sh 'eb use NewWebApp2-env';
 	                sh 'eb deploy';
