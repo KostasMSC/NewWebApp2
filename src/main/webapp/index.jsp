@@ -14,7 +14,7 @@
 	<p>
 	
 	<font face="verdana" color="green">
-	<h1>Welcome to CCP6418!</h1>
+	<h1>Welcome to CCP6418!!</h1>
 	<p>
 	<p>
 	<p>Today's topic: Geometric Shapes.
