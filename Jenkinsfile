@@ -33,7 +33,7 @@ pipeline {
 				            sh 'eb create NewWebApp2-env --single --cname NewWebApp2';
 				        }
 				        catch (exc) {
-				            echo "Error while creating environment, continue..., cause: " + e;
+				            echo "Error while creating environment, continue..., cause: " + exc;
 				        }
 			        }
 	                sh 'eb use NewWebApp2-env';
