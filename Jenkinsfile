@@ -16,25 +16,9 @@ pipeline {
                 echo "Checking out from git repository.";
             }
         }
-
-	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-	      // Prepare environment by creating and prepare environments
-	      stage('Prepare environment') {
-	        sh 'eb init NewWebApp2 -p "Docker running on 64bit Amazon Linux 2" --region "eu-central-1" '
-	        // Since AWS failed on create if environment already exists, try/catch block allow to continue deploy without failing
-	        try {
-	          sh 'eb create NewWebApp2-env --single --cname NewWebApp2'
-	        } catch(e) {
-	          echo "Error while creating environment, continue..., cause: " + e
-	        }
-	        sh 'eb use NewWebApp2-env'
-	      }
-	      // Ready to deploy our new version !
-	      stage('Deploy') {
-	        sh 'eb deploy'
-	        sh 'eb status'
-	      }
-	    }
+		withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+		    sh 'eb deploy';
+		}
 
     }
     post {
