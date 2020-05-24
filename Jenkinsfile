@@ -23,7 +23,7 @@ pipeline {
                 [[
                     $class: 'AmazonWebServicesCredentialsBinding',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    credentialsId: 'AWS',  // ID of credentials in Jenkins
+                    credentialsId: 'aws_id',  // ID of credentials in Jenkins
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     echo "Listing contents of an S3 bucket.";
