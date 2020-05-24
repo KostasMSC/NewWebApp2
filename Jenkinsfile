@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh 'git checkout master';
                 sh 'eb use NewWebApp2-env';
-                sh 'eb deploy';
+                sh 'eb deploy --profile default';
             }
         }
     }
