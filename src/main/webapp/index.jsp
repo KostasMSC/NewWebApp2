@@ -33,17 +33,6 @@
         <li><a href="Hexagon.jsp">Hexagon</a></li>
     </ol>
     <br>
-	<br>
-	<br>
-	<center>
-		<font size="2">
-		<p>&copy; AthTech, 2020, all rights reserved.
-		<p>email: <a href="mailto:sefremidis@athtech.gr">sefremidis@athtech.gr</a>
-		<p>URL: <a href="https://athtech.gr">www.athtech.gr</a>
-		<p>Current time: <%=LocalDateTime.now()%>
-		</p>
-		</font>
-	</center>
 	<%
 	final String SERVER_HOST = "ec2-3-126-50-207.eu-central-1.compute.amazonaws.com";
 	final int SERVER_PORT = 10001;
@@ -68,6 +57,17 @@
 			e.printStackTrace();
 		}	
 	%>
+	<br>
+	<br>
+	<center>
+		<font size="2">
+		<p>&copy; AthTech, 2020, all rights reserved.
+		<p>email: <a href="mailto:sefremidis@athtech.gr">sefremidis@athtech.gr</a>
+		<p>URL: <a href="https://athtech.gr">www.athtech.gr</a>
+		<p>Current time: <%=LocalDateTime.now()%>
+		</p>
+		</font>
+	</center>
 	</font>
 </body>
 </html>
