@@ -37,6 +37,7 @@
 	final String SERVER_HOST = "ec2-3-122-223-83.eu-central-1.compute.amazonaws.com";
 	final int SERVER_PORT = 10001;
 	
+	
 		Socket cskt;
 		try {
 			cskt = new Socket(SERVER_HOST, SERVER_PORT);
