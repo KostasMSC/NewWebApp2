@@ -45,7 +45,7 @@
 			
 			oos.writeObject("get quote");
 			String[] reply = (String[])ois.readObject();
-			out.println(reply[0] + " - " + reply[1]);
+			out.println("<p style=font-size:30px;font-family:verdana;color:blue>" + reply[0] + " - " + reply[1] + "</p>");
 			oos.close();
 			ois.close();
 			cskt.close();
