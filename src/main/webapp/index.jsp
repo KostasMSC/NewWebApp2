@@ -34,7 +34,7 @@
     </ol>
     <br>
 	<%
-	final String SERVER_HOST = "ec2-3-126-50-207.eu-central-1.compute.amazonaws.com";
+	final String SERVER_HOST = "ec2-3-122-223-83.eu-central-1.compute.amazonaws.com";
 	final int SERVER_PORT = 10001;
 	
 		Socket cskt;
